@@ -46,16 +46,26 @@ function scrollToContact() {
 }
 
 // ============================================
-// NAVBAR SCROLL EFFECT
+// COMBINED SCROLL EFFECTS (NAVBAR + PARALLAX)
 // ============================================
 window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    
+    // Navbar scroll effect
     const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
+    if (scrolled > 100) {
         nav.style.background = 'rgba(15, 23, 42, 0.95)';
         nav.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.2)';
     } else {
         nav.style.background = 'rgba(15, 23, 42, 0.7)';
         nav.style.boxShadow = 'none';
+    }
+    
+    // Parallax effect for hero section
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        hero.style.opacity = 1 - (scrolled / 600);
     }
 });
 
@@ -106,16 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transform = 'translateY(30px)';
         card.style.transition = `opacity 0.6s ease-out ${index * 0.2}s, transform 0.6s ease-out ${index * 0.2}s`;
         
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        cardObserver.observe(card);
+        // Reuse the existing observer for project cards
+        observer.observe(card);
     });
 });
 
@@ -133,16 +135,4 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             });
         }
     });
-});
-
-// ============================================
-// PARALLAX EFFECT FOR HERO SECTION
-// ============================================
-window.addEventListener('scroll', () => {
-    const hero = document.querySelector('.hero');
-    const scrolled = window.pageYOffset;
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        hero.style.opacity = 1 - (scrolled / 600);
-    }
 });
