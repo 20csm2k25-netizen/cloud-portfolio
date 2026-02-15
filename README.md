@@ -146,7 +146,7 @@ This project is open source and available for personal use.
 ## 👤 Author
 
 **Ahsan Ali**
-- Email: ahsanalizardari709@gmail.com
+- Email: 20csm2k25@gmail.com
 - LinkedIn: https://www.linkedin.com/in/ahsan-ali-a82b57282
 
 ## 🤝 Contributing
