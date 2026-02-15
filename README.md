@@ -147,7 +147,7 @@ This project is open source and available for personal use.
 
 **Ahsan Ali**
 - Email: ahsanalizardari709@gmail.com
-- LinkedIn: [Your LinkedIn Profile]
+- LinkedIn: https://www.linkedin.com/in/ahsan-ali-a82b57282
 
 ## 🤝 Contributing
 
